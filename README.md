@@ -1,2 +1,1 @@
-vim
-===
+It contains anything about VIM
