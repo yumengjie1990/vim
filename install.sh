@@ -15,6 +15,7 @@ sudo make install
 
 echo "Step2: Install vundle"
 cd ~
+sudo apt-get install git
 mkdir .vim/bundle/
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
