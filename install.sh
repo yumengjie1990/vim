@@ -19,9 +19,10 @@ mkdir .vim/bundle/
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 echo "Step3: Get vimrc from git"
+ln -s ~/vim_yumengjie1990/vimrc ~/.vimrc
 cd ~/vim_yumengjie1990
-ln -s vimrc ~/.vimrc
-vim script.txt -S script.txt
+vim install_bundle.txt -S install_bundle.txt
+vim conque_2.3.vmb -S install_conque.txt
 
 echo "Step4: Get clang binaries"
 cd ~/software 

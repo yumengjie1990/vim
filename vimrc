@@ -22,8 +22,10 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Lokaltog/powerline'
 Bundle 'Lokaltog/powerline-fonts'
+Bundle 'flazz/vim-colorschemes'
 " vim-scripts repos
 Bundle 'vim-scripts/bufexplorer.zip'
+Bundle 'vim-scripts/Conque-Shell'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -109,25 +111,37 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
+" Color scheme
+if has("gui_running")
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline 
+    colorscheme molokai
+    set guioptions-=m
+    set guioptions-=T
+    set t_Co=256
+    set cursorline
+else
+    colorscheme torte
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => key maps
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <Leader>cc :CommandT<CR>
 nnoremap <silent> <Leader>bb :CommandTBuffer<CR>
-map <Leader>be :BufExplorerVerticalSplit<CR>
-map <leader>te :tabedit<space>
-map <leader>tn :tabnew .<cr>
+nnoremap <Leader>be :BufExplorerVerticalSplit<CR>
+nnoremap <Leader>cs :ConqueTermVSplit bash<CR>
+nnoremap <leader>te :tabedit<space>
+nnoremap <leader>tn :tabnew .<cr>
 nnoremap <space> za
 " move around tabs. conflict with the original screen top/bottom
 " comment them out if you want the original H/L
 " go to prev tab
-map <S-H> gT
+nnoremap <S-H> gT
 " go to next tab
-map <S-L> gt
-map <C-y> :YRShow<cr>
-map <F3> :NERDTree<cr>
-map <F4> :NERDTreeClose<cr>
-map <F5> :!scons -u -j4<cr>
+nnoremap <S-L> gt
+nnoremap <C-y> :YRShow<cr>
+nnoremap <F3> :NERDTree<cr>
+nnoremap <F4> :NERDTreeClose<cr>
+nnoremap <F5> :!scons -u -j4<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => others 
