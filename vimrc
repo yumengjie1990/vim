@@ -35,6 +35,7 @@ set history=300
 
 " Set to auto read when a file is changed from the outside
 set autoread
+set noswapfile 
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -42,7 +43,8 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>w :w<cr>
+nmap <leader>q :q<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -106,6 +108,10 @@ set laststatus=2
 set encoding=utf-8
 let g:Powerline_symbols='fancy'
 
+" Set command-T
+let g:CommandTMaxHeight = 30
+let g:CommandTCachedDirectories = 3
+
 " No sound on errors
 set noerrorbells
 set novisualbell
@@ -126,6 +132,7 @@ endif
 " => key maps
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <Leader>cc :CommandT<CR>
+nnoremap <silent> <Leader>cr :CommandT $HOME/ficus/<CR>
 nnoremap <silent> <Leader>bb :CommandTBuffer<CR>
 nnoremap <Leader>be :BufExplorerVerticalSplit<CR>
 nnoremap <Leader>cs :ConqueTermVSplit bash<CR>
@@ -152,3 +159,5 @@ set mouse=a
 "Restore cursor to file position in previous editing session
 set viminfo='10,\"100,:20,%,n~/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+au BufWinLeave *.cpp silent mkview
+au BufWinEnter *.cpp silent loadview
