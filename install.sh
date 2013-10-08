@@ -32,10 +32,10 @@ mkdir ycm_build
 echo "Step5: Build YCM"
 #sudo apt-get install cmake
 cd ~/software/ycm_build
-#cmake -G "Unix Makefiles" -DPATH_TO_LLVM_ROOT=~/software/clang+llvm-3.2-x86_64-linux-ubuntu-12.04 . ~/.vim/bundle/YouCompleteMe/cpp
-cmake -G "Unix Makefiles" -DPATH_TO_LLVM_ROOT=~/software/llvm-3.2.src/Release+Asserts . ~/.vim/bundle/YouCompleteMe/cpp
+cmake -G "Unix Makefiles" -DPATH_TO_LLVM_ROOT=~/software/clang+llvm-3.2-x86_64-linux-ubuntu-12.04 . ~/.vim/bundle/YouCompleteMe/cpp
+#cmake -G "Unix Makefiles" -DPATH_TO_LLVM_ROOT=~/software/llvm-3.2.src/Release+Asserts . ~/.vim/bundle/YouCompleteMe/cpp
 make ycm_core
-cp ~/software/llvm-3.2.src/Release+Asserts/lib/libclang.so ~/.vim/bundle/YouCompleteMe/python
+cp ~/software/clang+llvm-3.2-x86_64-linux-ubuntu-12.04/lib/libclang.so ~/.vim/bundle/YouCompleteMe/python
 
 echo "Step6: Install Command-T"
 cd ~/.vim/bundle/Command-T/ruby/command-t/

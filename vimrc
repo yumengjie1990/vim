@@ -14,8 +14,8 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
-Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/YankRing.vim'
+Bundle 'scrooloose/nerdtree'
 Bundle 'wincent/Command-T'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-easymotion'
@@ -23,9 +23,12 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'Lokaltog/powerline'
 Bundle 'Lokaltog/powerline-fonts'
 Bundle 'flazz/vim-colorschemes'
+Bundle 'wesleyche/Trinity'
 " vim-scripts repos
 Bundle 'vim-scripts/bufexplorer.zip'
-Bundle 'vim-scripts/Conque-Shell'
+Bundle 'vim-scripts/taglist.vim'
+Bundle 'vim-scripts/SrcExpl'
+Bundle 'vim-scripts/cscope.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -41,10 +44,12 @@ set noswapfile
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
+let g:ycm_confirm_extra_conf = 0
 
 " Fast saving
 nmap <leader>w :w<cr>
 nmap <leader>q :q<cr>
+nmap <leader>ti :TrinityToggleAll<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -107,6 +112,7 @@ set foldlevel=10
 set laststatus=2
 set encoding=utf-8
 let g:Powerline_symbols='fancy'
+let g:yankring_history_dir = '/home/mjyu/.vim/yankring/'
 
 " Set command-T
 let g:CommandTMaxHeight = 30
@@ -132,13 +138,15 @@ endif
 " => key maps
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <Leader>cc :CommandT<CR>
-nnoremap <silent> <Leader>cr :CommandT $HOME/ficus/<CR>
+nnoremap <silent> <Leader>cr :CommandT $HOME/code/videostream/<CR>
 nnoremap <silent> <Leader>bb :CommandTBuffer<CR>
 nnoremap <Leader>be :BufExplorerVerticalSplit<CR>
 nnoremap <Leader>cs :ConqueTermVSplit bash<CR>
 nnoremap <leader>te :tabedit<space>
 nnoremap <leader>tn :tabnew .<cr>
 nnoremap <space> za
+" ycm map
+nnoremap <leader>jj :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " move around tabs. conflict with the original screen top/bottom
 " comment them out if you want the original H/L
 " go to prev tab
@@ -159,5 +167,5 @@ set mouse=a
 "Restore cursor to file position in previous editing session
 set viminfo='10,\"100,:20,%,n~/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-au BufWinLeave *.cpp silent mkview
-au BufWinEnter *.cpp silent loadview
+"au BufWinLeave *.cpp silent mkview
+"au BufWinEnter *.cpp silent loadview
